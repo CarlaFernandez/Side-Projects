@@ -20,14 +20,21 @@ if __name__ == '__main__':
 
 chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-'
 
+
 def process_folder(path):
-    for filename in os.listdir(path):
-        ext = os.path.splitext(filename)[1]
-        print "\t filename: %s" %filename
-        new_filename = ''.join(random.choice(chars) for i in range(7)) + ext
-        print "\t new_filename: %s" %new_filename
-        os.rename(path+ os.sep+ filename, path + os.sep + new_filename)
-    return True
+    try:
+        for filename in os.listdir(path):
+                ext = os.path.splitext(filename)[1]
+                print "\t filename: %s" %filename
+                new_filename = ''.join(random.choice(chars) for i in range(7)) + ext
+                while new_filename in os.listdir(path):
+                    new_filename = ''.join(random.choice(chars) for i in range(7)) + ext
+                print "\t new filename: %s" %new_filename
+                os.rename(path + os.sep + filename, path + os.sep + new_filename)
+        return True
+    except IOError:
+        return False
+
 
 
 def main():
@@ -36,5 +43,7 @@ def main():
         result = process_folder(path)
         if result:
             print "Success!"
+        else:
+            print "An error ocurred.\n Please try again"
 
 main()
