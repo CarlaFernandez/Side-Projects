@@ -1,12 +1,12 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:         Automatic file renaming
+# Purpose:      Rename all the files in a folder to new randomly generated
+#               strings of 7 characters including all uppercase and lowercase
+#               letters and dashes.
 #
-# Author:      carla
+# Author:       Carla Fernandez
 #
-# Created:     28/11/2015
-# Copyright:   (c) carla 2015
-# Licence:     <your licence>
+# Created:      28/11/2015
 #-------------------------------------------------------------------------------
 import os
 import sys
@@ -20,6 +20,7 @@ if __name__ == '__main__':
 
 chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-'
 
+# ---------------- methods --------------------
 
 def process_folder(path):
     try:
@@ -45,5 +46,7 @@ def main():
             print "Success!"
         else:
             print "An error ocurred.\n Please try again"
+
+# ---------------- application --------------------
 
 main()
