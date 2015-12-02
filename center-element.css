@@ -1,6 +1,20 @@
-p{
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -75%);
+.quote {
+  position: absolute;
+  display: table;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 500px;
+  height: 200px;
+}
+
+.quote p{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 24px;
+  font-style: italic;
+  font-family: Cambria, Serif;
 }
