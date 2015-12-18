@@ -6,6 +6,7 @@
 # Author:      carla
 #
 # Created:     09/12/2015
+# Updated:     18/12/2015
 #-------------------------------------------------------------------------------
 
 def main():
@@ -109,6 +110,17 @@ def divMod(x1,x2):
         x6 = substract(x6,x5)
         x4 += 1
     x1 = x4
+    return x1
+
+def divInteger(x1, x2):
+    '''This function performs the operation:
+        div(y,x) = max{z >= 0 / z*x <= y} '''
+    x3 = 0
+    x4 = 0
+    while x4 <= x1:
+        x3 += 1
+        x4 = x3 * x2
+    x1 = x3-1
     return x1
 
 #------------------END OF FUNCTIONS--------------------#
