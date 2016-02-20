@@ -25,13 +25,16 @@ chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-'
 def process_folder(path):
     try:
         for filename in os.listdir(path):
-                ext = os.path.splitext(filename)[1]
-                print "\t filename: %s" %filename
-                new_filename = ''.join(random.choice(chars) for i in range(7)) + ext
-                while new_filename in os.listdir(path):
+                if not(os.path.isdir(os.path.join(path,filename))):
+                    ext = os.path.splitext(filename)[1]
+                    print ("\t filename: %s" %filename)
                     new_filename = ''.join(random.choice(chars) for i in range(7)) + ext
-                print "\t new filename: %s" %new_filename
-                os.rename(path + os.sep + filename, path + os.sep + new_filename)
+                    while new_filename in os.listdir(path):
+                        new_filename = ''.join(random.choice(chars) for i in range(7)) + ext
+                    print ("\t new filename: %s" %new_filename)
+                    os.rename(path + os.sep + filename, path + os.sep + new_filename)
+                else:
+                    process_folder(os.path.join(path,filename))
         return True
     except IOError:
         return False
@@ -39,13 +42,15 @@ def process_folder(path):
 
 
 def main():
+    #pattern = sys.argv[1]
+    #length = sys.argv[2]
     for path in sys.argv[1:]:
-        print "Renaming in path: %s..." %path
+        print ("Renaming in path: %s..." %path)
         result = process_folder(path)
         if result:
-            print "Success!"
+            print ("Success!")
         else:
-            print "An error ocurred.\n Please try again"
+            print ("An error ocurred.\n Please try again")
 
 # ---------------- application --------------------
 
