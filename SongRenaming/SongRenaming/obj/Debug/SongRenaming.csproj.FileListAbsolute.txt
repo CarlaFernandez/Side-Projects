@@ -1,0 +1,9 @@
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\bin\Debug\SongRenaming.exe.config
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\bin\Debug\SongRenaming.exe
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\bin\Debug\SongRenaming.pdb
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\obj\Debug\SongRenaming.csprojResolveAssemblyReference.cache
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\obj\Debug\SongRenaming.exe
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\obj\Debug\SongRenaming.pdb
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\bin\Debug\policy.2.0.taglib-sharp.dll
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\bin\Debug\taglib-sharp.dll
+D:\Carla\Documents\Git\Side-Projects\SongRenaming\SongRenaming\bin\Debug\policy.2.0.taglib-sharp.config
