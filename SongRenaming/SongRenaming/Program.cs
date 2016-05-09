@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SongRenaming {
     class Program {
@@ -26,15 +28,27 @@ namespace SongRenaming {
                 Boolean.TryParse(args[1], out renameSubfolders);
             else renameSubfolders = false;
 
-            var filesInCurrentDir = Directory.GetFiles(path)
-                .Where(file => extensions.Contains(Path.GetExtension(file))).ToList();
-            var filesInSubDirs = Directory.GetDirectories(path)
-                .SelectMany(dir => Directory.GetFiles(dir)
-                .Where(file => extensions.Contains(Path.GetExtension(file)))).ToList();
+            List<string> filesInCurrentDir = new List<string>();
+            List<string> filesInSubDirs = new List<string>();
+            Action[] actions = new Action[] {
+                () => filesInCurrentDir = Directory.GetFiles(path)
+                .AsParallel().Where(file => extensions.Contains(Path.GetExtension(file))).ToList(),
+                () => filesInSubDirs = Directory.GetDirectories(path)
+                .AsParallel().SelectMany(dir => Directory.GetFiles(dir)
+                .Where(file => extensions.Contains(Path.GetExtension(file)))).ToList()
+             };
+            Parallel.Invoke(actions);
 
-            filesInCurrentDir.ForEach(filepath => Rename(filepath));
-            if (renameSubfolders)
-                filesInSubDirs.ForEach(filepath => Rename(filepath));
+            actions = new Action[] {
+            () => Parallel.ForEach(filesInCurrentDir, (filepath) => {
+                Rename(filepath);
+            }),
+            () => {
+                if (renameSubfolders) Parallel.ForEach(filesInSubDirs, (filepath) => {
+                Rename(filepath);
+                });
+            }};
+            Parallel.Invoke(actions);
 
         }
 
